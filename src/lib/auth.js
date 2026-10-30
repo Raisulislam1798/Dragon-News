@@ -6,8 +6,10 @@ import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
 
 const client = new MongoClient(process.env.MONGO_URI);
-const db = client.db('Dragon news');
-
+if (process.env.NODE_ENV !== "production") {
+  globalThis._mongoClient = client;
+}
+const db = client.db("dragon-news");
 export const auth = betterAuth({
   database: mongodbAdapter(db, {
     client,

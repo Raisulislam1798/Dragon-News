@@ -19,9 +19,17 @@ const Register = () => {
             password:password, // required, The password of the user. It should be at least 8 characters long and max 128 by default.
             image:photo, // An optional profile image of the user.
             callbackURL: "/", // An optional URL to redirect to after the user signs up.
-         });
+            });
 
          console.log(res,error)
+         if(error){
+            alert(error.message)
+         }
+         if(res){
+            alert("Signup Successful")
+         }
+
+         
     }
     console.log(errors)
    
